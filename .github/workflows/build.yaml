@@ -2,9 +2,11 @@ name: build
 
 on:
   push:
-    branches: [ $default-branch ]
+    branches:
+      - main
   pull_request:
-    branches: [ $default-branch ]
+    branches:
+      - main
 
 jobs:
   build:
@@ -14,7 +16,12 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: Lint chapter files
+      - name: install packages
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install pandoc
+
+      - name: lint chapter files
         uses: avto-dev/markdown-lint@v1.5.0
         with:
           rules: '/lint/rules/changelog.js'
@@ -22,7 +29,7 @@ jobs:
           args: './CHANGELOG.md'
 
       - name: build
-        run: | 
+        run: |
           make all
           echo ${{ github.sha }} > Release.txt
 
@@ -32,7 +39,7 @@ jobs:
           echo "Add a tag to branch before merging"
           exit 1
 
-      - name: Release
+      - name: release
         if: ${{ startsWith(github.ref, 'refs/heads/') && startsWith(github.ref, 'refs/tags/') }}
         uses: softprops/action-gh-release@v2
         with:
