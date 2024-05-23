@@ -29,7 +29,7 @@ jobs:
           args: './CHANGELOG.md'
 
       - name: build
-        run: | 
+        run: |
           make all
           echo ${{ github.sha }} > Release.txt
 
@@ -39,7 +39,7 @@ jobs:
           echo "Add a tag to branch before merging"
           exit 1
 
-      - name: Release
+      - name: release
         if: ${{ startsWith(github.ref, 'refs/heads/') && startsWith(github.ref, 'refs/tags/') }}
         uses: softprops/action-gh-release@v2
         with:
