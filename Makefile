@@ -15,6 +15,10 @@ build: $(CHAPTER_FILES)
 	$(CHAPTER_FILES) \
     -o $(BUILD_DIR)/book.epub
 
+	pandoc \
+    $(BUILD_DIR)/book.epub \
+	-o $(BUILD_DIR)/book.pdf
+
 # ensure that each target is called, even if files with with the following
 # targets exist
 .PHONY: all clean build

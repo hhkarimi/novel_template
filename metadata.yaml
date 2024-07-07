@@ -1,21 +1,18 @@
 ---
+# see https://pandoc.org/MANUAL.html#epub-metadata
 title:
-- type: main
-  text: Fountain of Oceans
-- type: subtitle
-  text: An investigation of book building
+  - type: main
+    text: Fountain of Oceans
+  - type: subtitle
+    text: An investigation of book building
 author:
-- H. Karimi
-- Author Two
+  - H. Karimi
+  - Author Two
 keywords: [epic, fraternity]
 abstract: |
   This is the abstract.
 
   It consists of two paragraphs.
 publisher: All press is good press
-rights: © 2007 John Smith, CC BY-NC
-ibooks:
-  version: 1.3.4
-
-# see: https://pandoc.org/MANUAL.html#epubs
+rights: © 2024 H. Karimi, CC BY-NC
 ...
