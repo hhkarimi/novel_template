@@ -44,5 +44,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files:
-            ./book.epub
+            ./buil/book.epub
+            ./build/book.pdf
             Release.txt
